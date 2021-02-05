@@ -74,3 +74,9 @@ php artisan migrate
 
 Node packages Refresh:
 rm -rf node_modules && npm install && npm run dev
+
+# tinker for factories and testing
+php artisan tinker >> rails c
+
+>>> App\Models\Post::factory()->times(200)->create(['user_id'=>2,'body'=>"abc"]);
+>>>  App\Models\Post::factory()->times(5)->create(['user_id' => 1])   
