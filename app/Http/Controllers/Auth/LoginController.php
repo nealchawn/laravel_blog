@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    //
+    public function __construct(){
+        $this->middleware(['guest'])->except('delete'); // needs to flash error if unauthorized
+    }
+
     public function new(){
     	return view('auth.login');
     }
@@ -19,7 +22,7 @@ class LoginController extends Controller
     		'password' => ['required'], // looks for _confirmation
     	]);
 
-    	auth()->attempt($request->only('email','password'));
+    	auth()->attempt($request->only('email','password'), $request->remember);
     	if (auth()->user())
     		return redirect()->route('dashboard');
     	else

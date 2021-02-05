@@ -24,7 +24,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'dashboard'])
+->name('dashboard');
+//->middleware('auth');
+
 Route::get('/home',[DashboardController::class,'home'])->name('home');
 
 Route::get('/login',[LoginController::class, 'new'])->name('login');
