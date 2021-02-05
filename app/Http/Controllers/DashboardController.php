@@ -12,7 +12,7 @@ class DashboardController extends Controller
     //
     public function dashboard(){
     	//$user = auth()->user();
-    	//dd($user);
+    	dd(auth()->user()->posts[0]->user->name);
     	return view('dashboard');
     }
     public function home(){

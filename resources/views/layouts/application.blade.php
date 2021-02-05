@@ -17,7 +17,7 @@
 					<a href="{{route('dashboard')}}">Dashboard</a>
 				</li>
 				<li class="p-3">
-					<a href="">Post</a>
+					<a href="{{route('posts')}}">Post</a>
 				</li>
 			</ul>
 			<ul class="flex items-center">

@@ -22,6 +22,7 @@ Route::get('/', function () {
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])
@@ -37,6 +38,11 @@ Route::post('/logout',[LoginController::class, 'delete'])->name('logout');
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'create']);//->name('register'); //inherits
 
+Route::get('/posts',[PostController::class, 'index'])->name('posts');
+Route::post('/post',[PostController::class, 'create'])->name('post');
+
+/*
 Route::get('/posts', function(){
 	return view('posts.index');
 });
+*/
