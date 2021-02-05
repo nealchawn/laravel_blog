@@ -31167,6 +31167,11 @@ video {
           animation: bounce 1s infinite;
 }
 
+button:hover  {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

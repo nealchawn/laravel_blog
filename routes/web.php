@@ -20,8 +20,13 @@ Route::get('/', function () {
 */
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/register',[RegisterController::class, 'index']);
+
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+Route::get('/register',[RegisterController::class, 'index'])->name('register');
+Route::post('/register',[RegisterController::class, 'create']);//->name('register'); //inherits
 
 Route::get('/posts', function(){
 	return view('posts.index');
