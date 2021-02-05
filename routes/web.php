@@ -20,10 +20,16 @@ Route::get('/', function () {
 */
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+Route::get('/home',[DashboardController::class,'home'])->name('home');
+
+Route::get('/login',[LoginController::class, 'new'])->name('login');
+Route::post('/login',[LoginController::class, 'create']);
+Route::post('/logout',[LoginController::class, 'delete'])->name('logout');
 
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'create']);//->name('register'); //inherits
