@@ -9,7 +9,7 @@ class PostController extends Controller
 {
 	public function index(){
 		// eloquent methods on model
-		$posts = Post::paginate(2);//::get ::where ::find
+		$posts = Post::with(['user','likes'])->paginate(5);//::get ::where ::find
 
 		return view('posts.index', [
 			'posts' => $posts

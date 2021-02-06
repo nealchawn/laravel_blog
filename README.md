@@ -83,3 +83,9 @@ php artisan tinker >> rails c
 
 make sure APP_DEBUG=false for prod due to laravel-debugbar, there exists a php debug-bar
 composer require barryvdh/laravel-debugbar --dev
+
+
+
+// Posts index
+queries(posts) = posts+1
+due to individual calls on attributes such as user & likes 
