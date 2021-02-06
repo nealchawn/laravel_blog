@@ -80,3 +80,6 @@ php artisan tinker >> rails c
 
 >>> App\Models\Post::factory()->times(200)->create(['user_id'=>2,'body'=>"abc"]);
 >>>  App\Models\Post::factory()->times(5)->create(['user_id' => 1])   
+
+make sure APP_DEBUG=false for prod due to laravel-debugbar, there exists a php debug-bar
+composer require barryvdh/laravel-debugbar --dev
