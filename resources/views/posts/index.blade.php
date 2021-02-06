@@ -34,20 +34,22 @@
 					</div>
 
 					<div class="flex items-center">
-						@if(!($post->liked_by(auth()->user())))
-							<form action="{{route('post_rating', $post->id)}}" method="post" class="mr-1">
-								@csrf
-								<input type="text" name="status" value="like" hidden>
-								<button type="submit" class="text-blue-500">Like</button>
-							</form>
-						@else
-							<form action="{{route('post_rating', $post)}}" method="post" class="mr-1">
-								@csrf
-								@method('DELETE')
-								<input type="text" name="status" value="unlike" hidden>
-								<button type="submit" class="text-blue-500">Unlike</button>
-							</form>
-						@endif
+						@auth
+							@if(!($post->liked_by(auth()->user())))
+								<form action="{{route('post_rating', $post->id)}}" method="post" class="mr-1">
+									@csrf
+									<input type="text" name="status" value="like" hidden>
+									<button type="submit" class="text-blue-500">Like</button>
+								</form>
+							@else
+								<form action="{{route('post_rating', $post)}}" method="post" class="mr-1">
+									@csrf
+									@method('DELETE')
+									<input type="text" name="status" value="unlike" hidden>
+									<button type="submit" class="text-blue-500">Unlike</button>
+								</form>
+							@endif
+						@endauth
 						<span>{{$post->likes->count()}} {{Str::plural('like',$post->likes->count())}} </span>
 					</div>
 
