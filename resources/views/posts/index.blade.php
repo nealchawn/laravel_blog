@@ -33,6 +33,7 @@
 						{{$post->body}}
 					</div>
 
+
 					<div class="flex items-center">
 						@auth
 							@if(!($post->liked_by(auth()->user())))
@@ -49,8 +50,18 @@
 									<button type="submit" class="text-blue-500">Unlike</button>
 								</form>
 							@endif
+
+							@can('delete', $post)
+								<form action="{{route('delete_post',$post)}}" method="post" >
+									 @csrf
+									 @method('DELETE')
+									 <button type="submit" class="text-blue-500">Delete</button>
+								</form>
+							@endcan
+
 						@endauth
-						<span>{{$post->likes->count()}} {{Str::plural('like',$post->likes->count())}} </span>
+						
+						<span>&nbsp;&nbsp;{{$post->likes->count()}} {{Str::plural('like',$post->likes->count())}} </span>
 					</div>
 
 				@endforeach

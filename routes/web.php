@@ -41,6 +41,7 @@ Route::post('/register',[RegisterController::class, 'create']);//->name('registe
 
 Route::get('/posts',[PostController::class, 'index'])->name('posts');
 Route::post('/post',[PostController::class, 'create'])->name('post');
+Route::delete('/post/{post}',[PostController::class, 'destroy'])->name('delete_post');
 
 // route model binding instead of {id}
 Route::post('/post/{post}/post_rating',[PostRatingController::class, 'create'])->name('post_rating');

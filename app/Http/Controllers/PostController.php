@@ -8,8 +8,8 @@ use App\Models\Post;
 class PostController extends Controller
 {
 	public function index(){
-		// eloquent methods on model
-		$posts = Post::with(['user','likes'])->paginate(5);//::get ::where ::find
+		// eloquent methods on model latest()
+		$posts = Post::orderBy('created_at','desc')->with(['user','likes'])->paginate(5);//::get ::where ::find
 
 		return view('posts.index', [
 			'posts' => $posts
@@ -35,5 +35,17 @@ class PostController extends Controller
 		// requires adding user_id to fillable
 		**/
 
+	}
+
+	public function destroy(Post $post, Request $request){
+		/*
+		if($post->owned_by(auth()->user())){
+			$post->delete();
+		}
+		*/
+		$this->authorize('delete', $post);
+		$post->delete();
+
+		return back();
 	}
 }

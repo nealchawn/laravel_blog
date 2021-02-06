@@ -19,6 +19,10 @@ class Post extends Model
     	return $this->belongsTo(User::class);
     }
 
+    public function owned_by(User $user){
+        return ($this->user_id == $user->id);
+    }
+
     public function liked_by(User $user){
         
         return $this->likes->contains('user_id',$user->id); // look at a collection at a key & value
