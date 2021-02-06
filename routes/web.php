@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostRatingController;
 
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])
@@ -40,6 +41,10 @@ Route::post('/register',[RegisterController::class, 'create']);//->name('registe
 
 Route::get('/posts',[PostController::class, 'index'])->name('posts');
 Route::post('/post',[PostController::class, 'create'])->name('post');
+
+// route model binding instead of {id}
+Route::post('/post/{post}/post_rating',[PostRatingController::class, 'create'])->name('post_rating');
+Route::delete('/post/{post}/post_rating',[PostRatingController::class, 'destroy'])->name('post_rating');
 
 /*
 Route::get('/posts', function(){
