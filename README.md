@@ -88,4 +88,6 @@ composer require barryvdh/laravel-debugbar --dev
 
 // Posts index
 queries(posts) = posts+1
-due to individual calls on attributes such as user & likes 
+due to individual calls on attributes such as user & likes
+
+component == partial 

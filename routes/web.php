@@ -24,6 +24,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostRatingController;
+use App\Http\Controllers\UserPostController;
 
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])
@@ -46,6 +47,8 @@ Route::delete('/post/{post}',[PostController::class, 'destroy'])->name('delete_p
 // route model binding instead of {id}
 Route::post('/post/{post}/post_rating',[PostRatingController::class, 'create'])->name('post_rating');
 Route::delete('/post/{post}/post_rating',[PostRatingController::class, 'destroy'])->name('post_rating');
+
+Route::get('/user/{user:username}/posts',[UserPostController::class, 'index'])->name('user_posts');
 
 /*
 Route::get('/posts', function(){
