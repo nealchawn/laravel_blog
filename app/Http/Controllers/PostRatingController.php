@@ -16,6 +16,7 @@ class PostRatingController extends Controller
 
 	public function create(Post $post, Request $request){
 		//$post = Post::find($id);
+		// $post->likes()->withTrashed()->get() // onlyTrashed
     	if($post->liked_by($request->user())){
     		return response(null, 409); // conflict
     	}
@@ -25,7 +26,9 @@ class PostRatingController extends Controller
 			'status' => 'like' // $request->status
 		]);
 
-		Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+		if(!($post->likes()->onlyTrashed()->where('user_id',$request->user()->id)->count())){
+			Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+		}
 		
 		return back();
 	}
