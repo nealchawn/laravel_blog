@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\PostLiked;
+
 
 class DashboardController extends Controller
 {
@@ -11,7 +13,8 @@ class DashboardController extends Controller
 	}
     //
     public function dashboard(){
-    	//$user = auth()->user();
+    	// $user = auth()->user();
+
     	//dd(auth()->user()->posts[0]->likes);
     	return view('dashboard');
     }

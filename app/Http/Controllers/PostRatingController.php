@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostLiked;
 
 class PostRatingController extends Controller
 {
@@ -22,6 +24,8 @@ class PostRatingController extends Controller
 			'user_id' => $request->user()->id,
 			'status' => 'like' // $request->status
 		]);
+
+		Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
 		
 		return back();
 	}
