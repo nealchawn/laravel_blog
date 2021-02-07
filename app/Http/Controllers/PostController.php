@@ -16,6 +16,10 @@ class PostController extends Controller
 		]);
 	}
 
+	public function show(Post $post){
+		return view('posts.show', ['post'=>$post]);
+	}
+
 	public function create(Request $request){
 		//dd('ok');
 		$this->validate($request, [
