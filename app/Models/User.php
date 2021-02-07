@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function likes(){
         return $this->hasMany(PostRating::class)->where('status', '=', "like");
     }
+
+    public function received_likes(){
+        return $this->hasManyThrough(PostRating::class, Post::class);
+    }
 }
