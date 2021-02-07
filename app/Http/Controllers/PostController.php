@@ -7,6 +7,10 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+	public function __construct(){
+		$this->middleware(['auth'])->only(['create','delete']);
+	}
+
 	public function index(){
 		// eloquent methods on model latest()
 		$posts = Post::orderBy('created_at','desc')->with(['user','likes'])->paginate(5);//::get ::where ::find
